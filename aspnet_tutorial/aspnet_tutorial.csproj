@@ -466,9 +466,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Inc\head.cshtml" />
-    <Content Include="Views\Inc\nav.cshtml" />
-    <Content Include="Views\Inc\sidebar.cshtml" />
+    <Content Include="Views\Partials\_Head.cshtml" />
+    <Content Include="Views\Partials\_Nav.cshtml" />
+    <Content Include="Views\Partials\_Sidebar.cshtml" />
     <Content Include="Views\Templates\Default\default_layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
