@@ -378,7 +378,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Assets\css\bootstrap-theme.css.map" />
     <Content Include="Assets\css\bootstrap.css.map" />
-    <Content Include="Assets\fonts\fontawesome-free-5.1.1-web.zip" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
@@ -505,7 +504,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\fonts\fontawesome-free-5.1.1-web\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
