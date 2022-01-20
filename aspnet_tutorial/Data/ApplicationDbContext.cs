@@ -10,6 +10,7 @@ namespace aspnet_tutorial.Data
     {
         // Constructor
         public ApplicationDbContext()
+            : base("name=ApplicationDbContext")
         {
 
         }
