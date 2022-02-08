@@ -229,41 +229,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\category.cs">
-      <DependentUpon>SimpleStoreModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\customer.cs">
-      <DependentUpon>SimpleStoreModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\order.cs">
-      <DependentUpon>SimpleStoreModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\product.cs">
-      <DependentUpon>SimpleStoreModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\profile.cs">
-      <DependentUpon>SimpleStoreModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SimpleStoreModels.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SimpleStoreModels.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SimpleStoreModels.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SimpleStoreModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SimpleStoreModels.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SimpleStoreModels.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\user.cs">
-      <DependentUpon>SimpleStoreModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -314,25 +281,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\SimpleStoreModels.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SimpleStoreModels.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SimpleStoreModels.edmx.diagram">
-      <DependentUpon>SimpleStoreModels.edmx</DependentUpon>
-    </Content>
     <Content Include="libman.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Models\SimpleStoreModels.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SimpleStoreModels.edmx</DependentUpon>
-      <LastGenOutput>SimpleStoreModels.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SimpleStoreModels.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SimpleStoreModels.edmx</DependentUpon>
-      <LastGenOutput>SimpleStoreModels.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
