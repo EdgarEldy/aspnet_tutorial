@@ -1,3 +1,5 @@
+using MySql.Data.EntityFramework;
+
 namespace aspnet_tutorial.Migrations
 {
     using System;
@@ -10,6 +12,7 @@ namespace aspnet_tutorial.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(aspnet_tutorial.Data.ApplicationDbContext context)
