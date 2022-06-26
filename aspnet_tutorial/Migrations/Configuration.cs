@@ -28,12 +28,16 @@ namespace aspnet_tutorial.Migrations
                 new Category()
                 {
                     Id = 1,
-                    CategoryName = "Lemonades"
+                    CategoryName = "Lemonades",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 },
                 new Category()
                 {
                     Id = 2,
-                    CategoryName = "Alcohols"
+                    CategoryName = "Alcohols",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 });
 
             // Product seeders
