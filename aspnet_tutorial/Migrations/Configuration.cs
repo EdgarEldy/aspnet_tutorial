@@ -1,3 +1,4 @@
+using aspnet_tutorial.Models;
 using MySql.Data.EntityFramework;
 
 namespace aspnet_tutorial.Migrations
@@ -21,6 +22,19 @@ namespace aspnet_tutorial.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            // Category Seeders
+            context.Categories.AddOrUpdate(x => x.Id,
+                new Category()
+                {
+                    Id = 1,
+                    CategoryName = "Lemonades"
+                },
+                new Category()
+                {
+                    Id = 2,
+                    CategoryName = "Alcohols"
+                });
         }
     }
 }
