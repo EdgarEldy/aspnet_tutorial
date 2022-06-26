@@ -6,5 +6,9 @@ namespace aspnet_tutorial.Models
     public class Customer
     {
         //Constructor
+        public Customer()
+        {
+            
+        }
     }
 }
