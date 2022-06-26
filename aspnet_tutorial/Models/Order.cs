@@ -17,6 +17,7 @@ namespace aspnet_tutorial.Models
         [Key]
         public int Id { get; set; }
 
+        [ForeignKey("CustomerId")]
         public int? CustomerId { get; set; }
 
         public int? ProductId { get; set; }
@@ -28,5 +29,8 @@ namespace aspnet_tutorial.Models
         public DateTime? CreatedAt { get; set; }
 
         public DateTime? UpdatedAt { get; set; }
+
+        // Add relationship to Customer Model
+        public virtual Customer Customer { get; set; }
     }
 }
