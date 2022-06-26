@@ -17,10 +17,10 @@ namespace aspnet_tutorial.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("CustomerId")]
+        [ForeignKey("Customer")]
         public int? CustomerId { get; set; }
 
-        [ForeignKey("ProductId")]
+        [ForeignKey("Product")]
         public int? ProductId { get; set; }
 
         public double Qty { get; set; }
