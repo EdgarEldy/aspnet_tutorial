@@ -13,5 +13,11 @@ namespace aspnet_tutorial.Controllers
         {
             return View(await _context.Categories.ToListAsync());
         }
+        
+        // GET: Categories/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
