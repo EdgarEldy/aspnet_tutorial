@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using aspnet_tutorial.Models;
@@ -31,6 +32,23 @@ namespace aspnet_tutorial.Controllers
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        // GET: Categories/Edit/Id
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Category category = await _context.Categories.FindAsync(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(category);
         }
     }
 }
