@@ -1,0 +1,45 @@
+﻿@model IEnumerable<aspnet_tutorial.Models.Category>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Layouts/_Default.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">Products categories</div>
+        <div class="panel-body">
+            <a href="@Url.Action("Create","Categories")"
+               class="btn btn-primary">
+                New
+            </a>
+            <table data-toggle="table" data-url="" data-show-refresh="true" data-show-toggle="true"
+                   data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true"
+                   data-sort-name="name" data-sort-order="desc">
+                <thead>
+                <tr>
+                    <th data-sortable="true">ID</th>
+                    <th data-sortable="true">Category name</th>
+                    <th data-sortable="true">Option</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelIem => item.Id)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new {id = item.Id})
+                            @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
