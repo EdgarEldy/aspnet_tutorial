@@ -60,5 +60,20 @@ namespace aspnet_tutorial.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        
+        // GET: Categories/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var category = _context.Categories.Find(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View(category);
+        }
     }
 }
