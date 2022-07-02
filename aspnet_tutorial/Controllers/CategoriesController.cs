@@ -50,5 +50,15 @@ namespace aspnet_tutorial.Controllers
 
             return View(category);
         }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,CategoryName")] Category category)
+        {
+            if (!ModelState.IsValid) return View(category);
+            _context.Entry(category).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
