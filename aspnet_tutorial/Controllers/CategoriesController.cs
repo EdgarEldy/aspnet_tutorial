@@ -75,5 +75,15 @@ namespace aspnet_tutorial.Controllers
             }
             return View(category);
         }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            var category = await _context.Categories.FindAsync(id);
+            if (category != null) _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
