@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.Entity;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 using aspnet_tutorial.Data;
 
 namespace aspnet_tutorial.Controllers
@@ -7,10 +9,11 @@ namespace aspnet_tutorial.Controllers
     {
         // Initialize DbContexts
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
-        // GET
-        public ActionResult Index()
+        // GET Products
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var products = _context.Products.Include(p => p.Category);
+            return View(await products.ToListAsync());
         }
     }
 }
