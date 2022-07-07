@@ -1,7 +1,8 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using aspnet_tutorial.Data;
+using aspnet_tutorial.Models;
+using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
 
 namespace aspnet_tutorial.Controllers
 {
@@ -21,6 +22,17 @@ namespace aspnet_tutorial.Controllers
         {
             ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "CategoryName");
             return View();
+        }
+
+        //POST: Products/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "Id,CategoryId,ProductName,UnitPrice")] Product product)
+        {
+            if (!ModelState.IsValid) return View(product);
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }
