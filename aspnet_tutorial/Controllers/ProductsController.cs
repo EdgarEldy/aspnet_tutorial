@@ -15,5 +15,12 @@ namespace aspnet_tutorial.Controllers
             var products = _context.Products.Include(p => p.Category);
             return View(await products.ToListAsync());
         }
+        
+        //GET: Products/Create
+        public ActionResult Create()
+        {
+            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "CategoryName");
+            return View();
+        }
     }
 }
