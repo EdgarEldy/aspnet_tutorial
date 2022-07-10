@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using aspnet_tutorial.Models;
@@ -10,13 +11,14 @@ namespace aspnet_tutorial.Controllers
     {
         // Initialize DbContexts
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
+
         // GET Products
         public async Task<ActionResult> Index()
         {
             var products = _context.Products.Include(p => p.Category);
             return View(await products.ToListAsync());
         }
-        
+
         //GET: Products/Create
         public ActionResult Create()
         {
@@ -33,6 +35,24 @@ namespace aspnet_tutorial.Controllers
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        //GET: Products/Edit/5
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "CategoryName", product.CategoryId);
+            return View(product);
         }
     }
 }
