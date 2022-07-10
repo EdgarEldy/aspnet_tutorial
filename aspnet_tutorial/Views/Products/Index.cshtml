@@ -8,42 +8,44 @@
     <div class="panel panel-default">
         <div class="panel-heading">Products</div>
         <div class="panel-body">
-            <a href="@Url.Action("Create","Products")"
-               class="btn btn-primary">New</a>
+            <a href="@Url.Action("Create", "Products")"
+               class="btn btn-primary">
+                New
+            </a>
             <table data-toggle="table" data-url="" data-show-refresh="true" data-show-toggle="true"
                    data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true"
                    data-sort-name="name" data-sort-order="desc">
                 <thead>
-                    <tr>
-                        <th data-sortable="true">Product id</th>
-                        <th data-sortable="true">Category name</th>
-                        <th data-sortable="true">Product name</th>
-                        <th data-sortable="true">Unit price</th>
-                        <th data-sortable="true">Option</th>
+                <tr>
+                    <th data-sortable="true">Product id</th>
+                    <th data-sortable="true">Category name</th>
+                    <th data-sortable="true">Product name</th>
+                    <th data-sortable="true">Unit price</th>
+                    <th data-sortable="true">Option</th>
 
-                    </tr>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ProductName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UnitPrice)
-                            </td>
-
-                            <td>
-                            </td>
-                        </tr>
-                    }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
 
                 </tbody>
             </table>
