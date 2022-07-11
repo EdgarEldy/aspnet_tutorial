@@ -54,5 +54,21 @@ namespace aspnet_tutorial.Controllers
             ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "CategoryName", product.CategoryId);
             return View(product);
         }
+
+        //POST: Products/Edit/Id
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,CategoryId,ProductName,UnitPrice")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(product).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "CategoryName", product.CategoryId);
+            return View(product);
+        }
     }
 }
