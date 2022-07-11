@@ -42,7 +42,7 @@ namespace aspnet_tutorial.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Category category = await _context.Categories.FindAsync(id);
+            var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
                 return HttpNotFound();
