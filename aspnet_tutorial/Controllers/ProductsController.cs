@@ -70,5 +70,22 @@ namespace aspnet_tutorial.Controllers
             ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "CategoryName", product.CategoryId);
             return View(product);
         }
+
+        //GET: Products/Delete/Id
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(product);
+        }
     }
 }
