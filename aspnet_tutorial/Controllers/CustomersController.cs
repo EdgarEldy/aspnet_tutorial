@@ -14,5 +14,11 @@ namespace aspnet_tutorial.Controllers
             var customers = await _context.Customers.ToListAsync();
             return View(customers);
         }
+        
+        //GET: Customers/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
