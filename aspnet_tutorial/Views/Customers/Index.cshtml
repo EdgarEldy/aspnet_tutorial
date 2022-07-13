@@ -1,0 +1,61 @@
+﻿@model IEnumerable<aspnet_tutorial.Models.Customer>
+
+@{
+    Layout = "~/Views/Layouts/_Default.cshtml";
+}
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">Customers</div>
+        <div class="panel-body">
+            <a href="@Url.Action("Create", "Customers")"
+               class="btn btn-primary">
+                New
+            </a>
+            <table data-toggle="table" data-url="" data-show-refresh="true" data-show-toggle="true"
+                   data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true"
+                   data-sort-name="name" data-sort-order="desc">
+                <thead>
+                <tr>
+                    <th data-sortable="true">ID</th>
+                    <th data-sortable="true">First Name</th>
+                    <th data-sortable="true">Last Name</th>
+                    <th data-sortable="true">Tel</th>
+                    <th data-sortable="true">Email</th>
+                    <th data-sortable="true">Address</th>
+                    <th data-sortable="true">Option</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
