@@ -52,7 +52,7 @@ namespace aspnet_tutorial.Controllers
 
             return View(customer);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName, LastName, Tel, Email, Address")] Customer customer)
@@ -62,7 +62,7 @@ namespace aspnet_tutorial.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-        
+
         // GET: Customers/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
@@ -70,12 +70,25 @@ namespace aspnet_tutorial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var customer = await _context.Customers.FindAsync(id);
             if (customer == null)
             {
                 return HttpNotFound();
             }
+
             return View(customer);
+        }
+
+        //POST: Customers/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer != null) _context.Customers.Remove(customer);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }
