@@ -28,9 +28,7 @@ namespace aspnet_tutorial.Controllers
         //POST: Customers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(
-            [Bind(Include = "FirstName, LastName, Tel, Email, Address")]
-            Customer customer)
+        public async Task<ActionResult> Create([Bind(Include = "FirstName, LastName, Tel, Email, Address")] Customer customer)
         {
             if (!ModelState.IsValid) return View(customer);
             _context.Customers.Add(customer);
@@ -53,6 +51,16 @@ namespace aspnet_tutorial.Controllers
             }
 
             return View(customer);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName, LastName, Tel, Email, Address")] Customer customer)
+        {
+            if (!ModelState.IsValid) return View(customer);
+            _context.Entry(customer).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }
