@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -28,12 +29,30 @@ namespace aspnet_tutorial.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(
-            [Bind(Include = "FirstName, LastName, Tel, Email, Address")] Customer customer)
+            [Bind(Include = "FirstName, LastName, Tel, Email, Address")]
+            Customer customer)
         {
             if (!ModelState.IsValid) return View(customer);
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        // GET: Customers/Edit/Id
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(customer);
         }
     }
 }
