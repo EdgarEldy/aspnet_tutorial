@@ -62,5 +62,20 @@ namespace aspnet_tutorial.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        
+        // GET: Customers/Delete/5
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
     }
 }
