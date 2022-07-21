@@ -34,5 +34,13 @@ namespace aspnet_tutorial.Controllers
             var products = await _context.Products.Where(x => x.CategoryId == id).ToListAsync();
             return Json(products, JsonRequestBehavior.AllowGet);
         }
+
+        // Get unit price by product id
+        public async Task<JsonResult> GetUnitPrice(int productId)
+        {
+            _context.Configuration.ProxyCreationEnabled = false;
+            var product = await _context.Products.Where(p => p.Id == productId).FirstOrDefaultAsync();
+            return Json(product, JsonRequestBehavior.AllowGet);
+        }
     }
 }
