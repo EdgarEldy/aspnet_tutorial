@@ -26,5 +26,13 @@ namespace aspnet_tutorial.Controllers
             ViewBag.CustomerId = new SelectList(_context.Customers, "Id", "FirstName");
             return View();
         }
+
+        // Get products by category id using ajax
+        public async Task<JsonResult> GetProducts(int id)
+        {
+            _context.Configuration.ProxyCreationEnabled = false;
+            var products = await _context.Products.Where(x => x.CategoryId == id).ToListAsync();
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
     }
 }
