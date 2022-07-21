@@ -22,12 +22,12 @@ $(function () {
     });
 });
 
-//Calcute the total
+//Calculate the total
 $(function () {
-    $('#qty').on('change', function () {
+    $('#Qty').on('keyup', function () {
         var qty = $(this).val();
-        var unit_price = $('.unit-price').val();
-        var total = qty * unit_price;
-        $('#total').val(total);
+        var unitPrice = $('.unit-price').val();
+        var total = qty * unitPrice;
+        $('#Total').val(total);
     });
 });
