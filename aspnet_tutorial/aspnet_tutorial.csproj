@@ -369,6 +369,7 @@
     <Content Include="Views\Partials\_Sidebar.cshtml" />
     <Content Include="Views\Layouts\_Default.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
