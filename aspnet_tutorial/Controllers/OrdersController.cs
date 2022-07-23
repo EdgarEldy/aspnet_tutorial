@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using aspnet_tutorial.Models;
@@ -58,6 +59,25 @@ namespace aspnet_tutorial.Controllers
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        //GET: Orders/Edit/Id
+        public async Task<ActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.CustomerId = new SelectList(_context.Customers, "CustomerId", "FirstName", order.CustomerId);
+            ViewBag.ProductId = new SelectList(_context.Products, "ProductId", "ProductName", order.ProductId);
+            return View(order);
         }
     }
 }
