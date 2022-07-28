@@ -70,6 +70,7 @@ namespace aspnet_tutorial.Controllers
             }
 
             ViewBag.CustomerId = new SelectList(_context.Customers, "Id", "FirstName", order.CustomerId);
+            ViewData["Categories"] = await _context.Categories.ToListAsync();
             ViewBag.ProductId = new SelectList(_context.Products, "Id", "ProductName", order.ProductId);
             return View(order);
         }
