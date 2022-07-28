@@ -69,8 +69,8 @@ namespace aspnet_tutorial.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.CustomerId = new SelectList(_context.Customers, "CustomerId", "FirstName", order.CustomerId);
-            ViewBag.ProductId = new SelectList(_context.Products, "ProductId", "ProductName", order.ProductId);
+            ViewBag.CustomerId = new SelectList(_context.Customers, "Id", "FirstName", order.CustomerId);
+            ViewBag.ProductId = new SelectList(_context.Products, "Id", "ProductName", order.ProductId);
             return View(order);
         }
     }
