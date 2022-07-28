@@ -92,5 +92,22 @@ namespace aspnet_tutorial.Controllers
             ViewBag.ProductId = new SelectList(_context.Products, "Id", "ProductName", order.ProductId);
             return View(order);
         }
+
+        //GET: Orders/Delete/Id
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(order);
+        }
     }
 }
