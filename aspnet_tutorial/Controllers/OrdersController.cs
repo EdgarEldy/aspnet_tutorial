@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Antlr.Runtime.Misc;
 using aspnet_tutorial.Models;
 using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
 
@@ -69,6 +70,23 @@ namespace aspnet_tutorial.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.CustomerId = new SelectList(_context.Customers, "Id", "FirstName", order.CustomerId);
+            ViewData["Categories"] = await _context.Categories.ToListAsync();
+            ViewBag.ProductId = new SelectList(_context.Products, "Id", "ProductName", order.ProductId);
+            return View(order);
+        }
+
+        //POST: Orders/Edit/Id
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,CustomerId,ProductId,Qty,Total")] Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(order).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
             ViewBag.CustomerId = new SelectList(_context.Customers, "Id", "FirstName", order.CustomerId);
             ViewData["Categories"] = await _context.Categories.ToListAsync();
             ViewBag.ProductId = new SelectList(_context.Products, "Id", "ProductName", order.ProductId);
