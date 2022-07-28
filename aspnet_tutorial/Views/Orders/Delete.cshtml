@@ -1,0 +1,70 @@
+﻿@model aspnet_tutorial.Models.Order
+
+@{
+    Layout = "~/Views/Layouts/_Default.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this order?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            <label>First Name:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+        <dt>
+            <label>Last Name:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.LastName)
+        </dd>
+
+        <dt>
+            <label>Product Name:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductName)
+        </dd>
+
+        <dt>
+            <label>Unit Price:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.UnitPrice)
+        </dd>
+
+        <dt>
+            <label>Quantity:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty)
+        </dd>
+
+        <dt>
+            <label>Total</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
