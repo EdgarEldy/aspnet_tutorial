@@ -49,13 +49,7 @@ namespace aspnet_tutorial.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,CustomerId,ProductId,Qty,Total")] Order order)
         {
-            if (!ModelState.IsValid)
-            {
-                ViewBag.customer_id = new SelectList(_context.Customers, "CustomerId", "FirstName", order.CustomerId);
-                ViewBag.product_id = new SelectList(_context.Products, "ProductId", "ProductName", order.ProductId);
-                return View(order);
-            }
-
+            if (!ModelState.IsValid) return View(order);
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
