@@ -109,5 +109,17 @@ namespace aspnet_tutorial.Controllers
 
             return View(order);
         }
+
+        //POST: Orders/Delete/Id
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            var order = await _context.Orders.FindAsync(id);
+            if (order != null) _context.Orders.Remove(order);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+        }
     }
 }
