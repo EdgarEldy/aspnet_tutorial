@@ -24,5 +24,8 @@ namespace aspnet_tutorial.Models
         [Key]
         [Column(Order = 3)]
         public string ProviderKey { get; set; }
+        
+        // Add relationship to User Model
+        public virtual User User { get; set; }
     }
 }
