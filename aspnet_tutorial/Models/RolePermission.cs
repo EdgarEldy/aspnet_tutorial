@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aspnet_tutorial.Models
 {
@@ -10,5 +11,16 @@ namespace aspnet_tutorial.Models
         {
             
         }
+        
+        // Properties 
+        [Key]
+        [Column(Order = 1)]
+        [ForeignKey("Permission")]
+        public long PermissionId { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        [ForeignKey("Role")]
+        public long RoleId { get; set; }
     }
 }
