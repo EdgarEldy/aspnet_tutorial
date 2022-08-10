@@ -21,5 +21,8 @@ namespace aspnet_tutorial.Models
         public string ClaimType { get; set; }
 
         public string ClaimValue { get; set; }
+        
+        // Add relationship to User Model
+        public virtual User User { get; set; }
     }
 }
