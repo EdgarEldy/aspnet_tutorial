@@ -25,5 +25,8 @@ namespace aspnet_tutorial.Models
         
         // Add relationship to Permission Model
         public virtual Permission Permission { get; set; }
+        
+        // Add relationship to User Model
+        public virtual User User { get; set; }
     }
 }
