@@ -22,5 +22,8 @@ namespace aspnet_tutorial.Models
         [Column(Order = 2)]
         [ForeignKey("Role")]
         public long RoleId { get; set; }
+        
+        // Add relationship to Permission Model
+        public virtual Permission Permission { get; set; }
     }
 }
