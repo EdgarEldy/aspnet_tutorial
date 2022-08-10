@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,6 +11,8 @@ namespace aspnet_tutorial.Models
         // Constructor
         public User()
         {
+            this.UserClaims = new HashSet<UserClaim>();
+            this.UserLogins = new HashSet<UserLogin>();
         }
 
         // Properties
@@ -43,5 +46,10 @@ namespace aspnet_tutorial.Models
         public int? AccessFailedCount { get; set; }
         
         public string UserName { get; set; }
+        
+        // Add relationship to UserClaim and UserLogin models
+        public virtual ICollection<UserClaim> UserClaims { get; set; }
+
+        public virtual ICollection<UserLogin> UserLogins { get; set; }
     }
 }
