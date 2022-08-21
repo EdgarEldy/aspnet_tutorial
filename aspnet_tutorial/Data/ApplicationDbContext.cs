@@ -23,5 +23,8 @@ namespace aspnet_tutorial.Data
         
         // Permissions
         public DbSet<Permission> Permissions { get; set; }
+        
+        // Roles
+        public DbSet<Role> Roles { get; set; }
     }
 }
