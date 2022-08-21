@@ -20,5 +20,8 @@ namespace aspnet_tutorial.Data
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Order> Orders { get; set; }
+        
+        // Permissions
+        public DbSet<Permission> Permissions { get; set; }
     }
 }
