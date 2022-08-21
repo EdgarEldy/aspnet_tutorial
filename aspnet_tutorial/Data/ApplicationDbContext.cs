@@ -35,5 +35,8 @@ namespace aspnet_tutorial.Data
         
         // UserClaims
         public DbSet<UserClaim> UserClaims { get; set; }
+        
+        // UserLogins
+        public DbSet<UserLogin> UserLogins { get; set; }
     }
 }
