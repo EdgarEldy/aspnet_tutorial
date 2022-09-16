@@ -38,5 +38,8 @@ namespace aspnet_tutorial.Data
         
         // UserLogins
         public DbSet<UserLogin> UserLogins { get; set; }
+        
+        // UserRoles
+        public DbSet<UserRole> UserRoles { get; set; }
     }
 }

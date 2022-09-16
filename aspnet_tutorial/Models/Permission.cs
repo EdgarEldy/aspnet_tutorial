@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aspnet_tutorial.Models
 {
-    [Table("permissions")]
+    [Table("Permissions")]
     public class Permission
     {
         // Constructor
