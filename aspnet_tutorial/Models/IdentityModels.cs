@@ -23,6 +23,12 @@ namespace aspnet_tutorial.Models
     {
     }
 
+    // Define ApplicationUserRole class which inherits IdentityUserRole generic type
+    public class ApplicationUserRole : IdentityUserRole
+    {
+
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
