@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aspnet_tutorial.Models
 {
-    [Table("roles")]
+    [Table("Roles")]
     public class Role
     {
         // Constructor

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aspnet_tutorial.Models
 {
-    [Table(("users"))]
+    [Table(("Users"))]
     public class User
     {
         // Constructor

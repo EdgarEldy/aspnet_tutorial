@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aspnet_tutorial.Models
 {
-    [Table("roles_permissions")]
+    [Table("RolePermissions")]
     public class RolePermission
     {
         // Constructor
