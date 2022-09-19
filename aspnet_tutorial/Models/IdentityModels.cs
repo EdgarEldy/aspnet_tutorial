@@ -29,6 +29,12 @@ namespace aspnet_tutorial.Models
 
     }
 
+    // Define ApplicationUserClaim class which inherits IdentityUserClaim generic type
+    public class ApplicationUserClaim : IdentityUserClaim
+    {
+
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
