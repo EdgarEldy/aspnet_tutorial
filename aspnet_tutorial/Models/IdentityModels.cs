@@ -18,8 +18,8 @@ namespace aspnet_tutorial.Models
         }
     }
 
-    // Define ApplicationRole class which inherits IdentityUserRole generic type
-    public class ApplicationRole : IdentityUserRole
+    // Define ApplicationRole class which inherits IdentityRole generic type
+    public class ApplicationRole : IdentityRole
     {
     }
 
