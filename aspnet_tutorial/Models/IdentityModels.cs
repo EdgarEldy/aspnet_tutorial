@@ -35,6 +35,12 @@ namespace aspnet_tutorial.Models
 
     }
 
+    // Define ApplicationUserLogin class which inherits IdentityUserLogin generic type
+    public class ApplicationUserLogin : IdentityUserLogin
+    {
+
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
