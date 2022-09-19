@@ -22,5 +22,8 @@ namespace aspnet_tutorial.Models
         [Column(Order = 2)]
         [ForeignKey("Role")]
         public int RoleId { get; set; }
+
+        // Add relationship to User model
+        public virtual User User { get; set; }
     }
 }
