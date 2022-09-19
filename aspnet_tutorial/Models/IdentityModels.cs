@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -18,16 +19,56 @@ namespace aspnet_tutorial.Models
         }
     }
 
+    // Define ApplicationRole class which inherits IdentityRole generic type
+    public class ApplicationRole : IdentityRole
+    {
+    }
+
+    // Define ApplicationUserRole class which inherits IdentityUserRole generic type
+    public class ApplicationUserRole : IdentityUserRole
+    {
+
+    }
+
+    // Define ApplicationUserClaim class which inherits IdentityUserClaim generic type
+    public class ApplicationUserClaim : IdentityUserClaim
+    {
+
+    }
+
+    // Define ApplicationUserLogin class which inherits IdentityUserLogin generic type
+    public class ApplicationUserLogin : IdentityUserLogin
+    {
+
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("ApplicationDbContext", throwIfV1Schema: false)
         {
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        // Renaming identity tables to custom tables
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            if (modelBuilder == null)
+            {
+                throw new ArgumentNullException("ModelBuilder is NULL");
+            }
+
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationUser>().ToTable("Users");
+            modelBuilder.Entity<ApplicationRole>().ToTable("Roles");
+            modelBuilder.Entity<ApplicationUserRole>().ToTable("UserRoles");
+            modelBuilder.Entity<ApplicationUserClaim>().ToTable("UserClaims");
+            modelBuilder.Entity<ApplicationUserLogin>().ToTable("UserLogins");
         }
     }
 }
