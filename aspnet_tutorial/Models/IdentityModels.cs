@@ -8,9 +8,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace aspnet_tutorial.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser, string> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
@@ -20,8 +20,17 @@ namespace aspnet_tutorial.Models
     }
 
     // Define ApplicationRole class which inherits IdentityRole generic type
-    public class ApplicationRole : IdentityRole
+    public class ApplicationRole : IdentityRole<string, ApplicationUserRole>
     {
+        public ApplicationRole()
+        {
+            
+        }
+
+        public ApplicationRole(string name)
+        {
+            Name = name;
+        }
     }
 
     // Define ApplicationUserRole class which inherits IdentityUserRole generic type
@@ -41,11 +50,30 @@ namespace aspnet_tutorial.Models
     {
 
     }
+    
+    // Add custom MyUserStore class
+    public class MyUserStore : UserStore<ApplicationUser, ApplicationRole, string,
+        ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
+    {
+        public MyUserStore(ApplicationDbContext context)
+            : base(context)
+        {
+        }
+    }
+    
+    // Add customer MyRoleStore class
+    public class MyRoleStore : RoleStore<ApplicationRole, string, ApplicationUserRole>
+    {
+        public MyRoleStore(ApplicationDbContext context)
+            : base(context)
+        {
+        }
+    }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
         public ApplicationDbContext()
-            : base("ApplicationDbContext", throwIfV1Schema: false)
+            : base("ApplicationDbContext")
         {
         }
 
