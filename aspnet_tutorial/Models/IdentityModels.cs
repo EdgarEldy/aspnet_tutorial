@@ -50,6 +50,16 @@ namespace aspnet_tutorial.Models
     {
 
     }
+    
+    // Add custom MyUserStore class
+    public class MyUserStore : UserStore<ApplicationUser, ApplicationRole, string,
+        ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
+    {
+        public MyUserStore(ApplicationDbContext context)
+            : base(context)
+        {
+        }
+    }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
