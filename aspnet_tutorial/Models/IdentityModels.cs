@@ -51,10 +51,10 @@ namespace aspnet_tutorial.Models
 
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
         public ApplicationDbContext()
-            : base("ApplicationDbContext", throwIfV1Schema: false)
+            : base("ApplicationDbContext")
         {
         }
 
