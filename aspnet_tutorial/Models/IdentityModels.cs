@@ -60,6 +60,15 @@ namespace aspnet_tutorial.Models
         {
         }
     }
+    
+    // Add customer MyRoleStore class
+    public class MyRoleStore : RoleStore<ApplicationRole, string, ApplicationUserRole>
+    {
+        public MyRoleStore(ApplicationDbContext context)
+            : base(context)
+        {
+        }
+    }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
