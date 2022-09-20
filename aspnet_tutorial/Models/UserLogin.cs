@@ -15,14 +15,17 @@ namespace aspnet_tutorial.Models
         [Key]
         [Column(Order = 1)]
         [ForeignKey("User")]
-        public long UserId { get; set; }
+        [StringLength(128)]
+        public string UserId { get; set; }
         
         [Key]
         [Column(Order = 2)]
+        [StringLength(128)]
         public string LoginProvider { get; set; }
 
         [Key]
         [Column(Order = 3)]
+        [StringLength(128)]
         public string ProviderKey { get; set; }
         
         // Add relationship to User Model

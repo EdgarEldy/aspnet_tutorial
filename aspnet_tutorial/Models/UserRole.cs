@@ -16,12 +16,14 @@ namespace aspnet_tutorial.Models
         [Key]
         [Column(Order = 1)]
         [ForeignKey("User")]
-        public int UserId { get; set; }
+        [StringLength(128)]
+        public string UserId { get; set; }
 
         [Key]
         [Column(Order = 2)]
         [ForeignKey("Role")]
-        public int RoleId { get; set; }
+        [StringLength(128)]
+        public string RoleId { get; set; }
 
         // Add relationship to User model
         public virtual User User { get; set; }

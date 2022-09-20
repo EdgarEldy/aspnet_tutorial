@@ -16,7 +16,8 @@ namespace aspnet_tutorial.Models
         public int Id { get; set; }
 
         [ForeignKey("User")]
-        public long UserId { get; set; }
+        [StringLength(128)]
+        public string UserId { get; set; }
 
         public string ClaimType { get; set; }
 

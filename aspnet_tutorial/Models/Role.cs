@@ -14,7 +14,9 @@ namespace aspnet_tutorial.Models
         }
 
         // Properties
-        [Key] public int Id { get; set; }
+        [Key] 
+        [StringLength(128)]
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
