@@ -11,16 +11,19 @@ namespace aspnet_tutorial.Models
         public Role()
         {
             this.RolePermissions = new HashSet<RolePermission>();
+            this.UserRoles = new HashSet<UserRole>();
         }
 
         // Properties
         [Key] 
-        [StringLength(128)]
-        public string Id { get; set; }
+        public long Id { get; set; }
 
         public string Name { get; set; }
 
         // Add relationship to RolePermission Model
         public virtual ICollection<RolePermission> RolePermissions { get; set; }
+        
+        // Add relationship to UserRole model
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }
