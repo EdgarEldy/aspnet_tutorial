@@ -22,21 +22,6 @@ namespace aspnet_tutorial.Migrations
             //  to avoid creating duplicate seed data.
 
             // Category Seeders
-            context.Categories.AddOrUpdate(x => x.Id,
-                new Category()
-                {
-                    Id = 1,
-                    CategoryName = "Lemonades",
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                },
-                new Category()
-                {
-                    Id = 2,
-                    CategoryName = "Alcohols",
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                });
 
             // Product seeders
             context.Products.AddOrUpdate(x => x.Id,
