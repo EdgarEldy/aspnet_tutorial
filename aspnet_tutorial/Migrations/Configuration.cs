@@ -1,4 +1,5 @@
 using aspnet_tutorial.Models;
+using aspnet_tutorial.Seeders;
 
 namespace aspnet_tutorial.Migrations
 {
@@ -22,7 +23,7 @@ namespace aspnet_tutorial.Migrations
             //  to avoid creating duplicate seed data.
 
             // Category Seeders
-
+            CategorySeeder.Run(context);
             // Product seeders
             context.Products.AddOrUpdate(x => x.Id,
                 new Product()
