@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using aspnet_tutorial.Models;
+using Microsoft.AspNet.Identity;
 using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
 
 namespace aspnet_tutorial.Seeders
@@ -109,6 +111,39 @@ namespace aspnet_tutorial.Seeders
                 context.Roles.Add(role);
                 context.SaveChanges();
             }
+        }
+
+        // Add user data seeder and attribute admin role to user
+        public static void UserSeeder(ApplicationDbContext context)
+        {
+
+            var user = new User
+            {
+                FirstName = "Super",
+                LastName = "Admin",
+                UserName = "admin@gmail.com",
+                Email = "admin@gmail.com",
+                EmailConfirmed = true,
+                PhoneNumber = "72 800 800",
+                PhoneNumberConfirmed = true,
+                PasswordHash = new PasswordHasher().HashPassword("Pa$$w0rd"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                TwoFactorEnabled = false,
+                LockoutEnabled = true,
+                AccessFailedCount = 0
+            };
+
+            context.Users.Add(user);
+            context.SaveChanges();
+
+            var userRole = new UserRole
+            {
+                UserId = context.Users.First(u => u.Email == "admin@gmail.com").Id,
+                RoleId = (context.Roles.First(p => p.Name == "Admin")).Id
+            };
+
+            context.UserRoles.Add(userRole);
+            context.SaveChanges();
         }
     }
 }
