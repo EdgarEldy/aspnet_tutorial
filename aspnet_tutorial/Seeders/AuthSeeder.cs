@@ -61,5 +61,54 @@ namespace aspnet_tutorial.Seeders
 
             context.SaveChanges();
         }
+
+        // Add roles data seeder and attribute every role to a permission
+        public static void RoleSeeder(ApplicationDbContext context)
+        {
+            if (context.Roles.Any()) return;
+
+            var roles = new List<Role>
+            {
+                new Role
+                {
+                    Name = "Admin",
+                    RolePermissions = new List<RolePermission>()
+                },
+                new Role
+                {
+                    Name = "User",
+                    RolePermissions = new List<RolePermission>()
+                }
+            };
+
+            foreach (var role in roles)
+            {
+                var permissions = new List<Permission>();
+
+                if (role.Name == "Admin")
+                {
+                    permissions = context.Permissions.ToList();
+                }
+
+                else
+                {
+                    permissions = context.Permissions.Where(p => !DbFunctions.Like(p.Name, "Users.%"))
+                        .Where(p => !DbFunctions.Like(p.Name, "Roles.%")).ToList();
+                }
+
+                foreach (var permission in permissions)
+                {
+                    var rolePermission = new RolePermission
+                    {
+                        Permission = permission
+                    };
+
+                    role.RolePermissions.Add(rolePermission);
+                }
+
+                context.Roles.Add(role);
+                context.SaveChanges();
+            }
+        }
     }
 }
