@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using aspnet_tutorial.Data;
 using aspnet_tutorial.Models;
 using Microsoft.AspNet.Identity;
-using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
 
 namespace aspnet_tutorial.Seeders
 {
-    public class AuthSeeder : CreateDatabaseIfNotExists<ApplicationDbContext>
+    public class AuthSeeder : CreateDatabaseIfNotExists<AspNetDbContext>
     {
         // Permissions seeder
-        public static void PermissionSeeder(ApplicationDbContext context)
+        public static void PermissionSeeder(AspNetDbContext context)
         {
             if (context.Permissions.Any()) return;
             var permissions = new List<string>
@@ -65,7 +65,7 @@ namespace aspnet_tutorial.Seeders
         }
 
         // Add roles data seeder and attribute every role to a permission
-        public static void RoleSeeder(ApplicationDbContext context)
+        public static void RoleSeeder(AspNetDbContext context)
         {
             if (context.Roles.Any()) return;
 
@@ -114,7 +114,7 @@ namespace aspnet_tutorial.Seeders
         }
 
         // Add user data seeder and attribute admin role to user
-        public static void UserSeeder(ApplicationDbContext context)
+        public static void UserSeeder(AspNetDbContext context)
         {
 
             var user = new User
