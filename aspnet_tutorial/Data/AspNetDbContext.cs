@@ -3,11 +3,11 @@ using aspnet_tutorial.Models;
 
 namespace aspnet_tutorial.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class AspNetDbContext : DbContext
     {
         // Constructor
-        public ApplicationDbContext()
-            : base("name=ApplicationDbContext")
+        public AspNetDbContext()
+            : base("name=AspNetDbContext")
         {
 
         }
