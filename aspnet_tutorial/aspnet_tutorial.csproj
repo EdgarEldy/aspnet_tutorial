@@ -248,6 +248,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seeders\AuthSeeder.cs" />
     <Compile Include="Seeders\CategorySeeder.cs" />
+    <Compile Include="Seeders\ProductSeeder.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
