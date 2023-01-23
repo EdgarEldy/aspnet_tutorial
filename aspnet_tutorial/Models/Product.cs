@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aspnet_tutorial.Models
@@ -9,7 +10,7 @@ namespace aspnet_tutorial.Models
         //Constructor
         public Product()
         {
-            
+            this.Orders = new HashSet<Order>();
         }
         
         // Properties goes here..
@@ -28,5 +29,8 @@ namespace aspnet_tutorial.Models
 
         // Add relationship to Category Model
         public virtual Category Category { get; set; }
+        
+        // Add relationship to Order model
+        public virtual  ICollection<Order> Orders { get; set; }
     }
 }
