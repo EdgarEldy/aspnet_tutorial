@@ -30,27 +30,6 @@ namespace aspnet_tutorial.Migrations
             // Customer seeders
 
             // Order seeders
-            context.Orders.AddOrUpdate(x => x.Id,
-                new Order()
-                {
-                    Id = 1,
-                    CustomerId = 1,
-                    ProductId = 1,
-                    Qty = 2,
-                    Total = 1600,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                },
-                new Order()
-                {
-                    Id = 2,
-                    CustomerId = 2,
-                    ProductId = 3,
-                    Qty = 3,
-                    Total = 5400,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now 
-                });
         }
     }
 }
