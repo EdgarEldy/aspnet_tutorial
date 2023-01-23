@@ -28,52 +28,19 @@ namespace aspnet_tutorial.Migrations
             ProductSeeder.Run(context);
 
             // Customer seeders
-            context.Customers.AddOrUpdate(x => x.Id,
-                new Customer()
-                {
-                    Id = 1,
-                    FirstName = "John",
-                    LastName = "Doe",
-                    Tel = "+125684128",
-                    Email = "johndoe@gmail.com",
-                    Address = "Queens",
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now,
-                },
-                new Customer()
-                {
-                    Id = 1,
-                    FirstName = "James",
-                    LastName = "Jones",
-                    Tel = "+181235796",
-                    Email = "jamesjones@gmail.com",
-                    Address = "NYC",
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now,
-                });
+            CustomerSeeder.Run(context);
 
             // Order seeders
-            context.Orders.AddOrUpdate(x => x.Id,
-                new Order()
-                {
-                    Id = 1,
-                    CustomerId = 1,
-                    ProductId = 1,
-                    Qty = 2,
-                    Total = 1600,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                },
-                new Order()
-                {
-                    Id = 2,
-                    CustomerId = 2,
-                    ProductId = 3,
-                    Qty = 3,
-                    Total = 5400,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now 
-                });
+            OrderSeeder.Run(context);
+
+            // Permission Seeders
+            AuthSeeder.PermissionSeeder(context);
+
+            // Role Seeders
+            AuthSeeder.RoleSeeder(context);
+
+            // User Seeders
+            AuthSeeder.UserSeeder(context);
         }
     }
 }
