@@ -32,6 +32,15 @@ namespace aspnet_tutorial.Migrations
 
             // Order seeders
             OrderSeeder.Run(context);
+
+            // Permission Seeders
+            AuthSeeder.PermissionSeeder(context);
+
+            // Role Seeders
+            AuthSeeder.RoleSeeder(context);
+
+            // User Seeders
+            AuthSeeder.UserSeeder(context);
         }
     }
 }
