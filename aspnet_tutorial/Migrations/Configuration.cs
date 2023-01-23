@@ -29,7 +29,9 @@ namespace aspnet_tutorial.Migrations
 
             // Customer seeders
             CustomerSeeder.Run(context);
+
             // Order seeders
+            OrderSeeder.Run(context);
         }
     }
 }
