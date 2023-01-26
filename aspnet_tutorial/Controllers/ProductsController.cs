@@ -2,15 +2,16 @@
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using aspnet_tutorial.Data;
 using aspnet_tutorial.Models;
-using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
+using ApplicationDbContext = aspnet_tutorial.Data.AspNetDbContext;
 
 namespace aspnet_tutorial.Controllers
 {
     public class ProductsController : Controller
     {
         // Initialize DbContexts
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        private readonly ApplicationDbContext _context = new AspNetDbContext();
 
         // GET Products
         public async Task<ActionResult> Index()
