@@ -3,14 +3,15 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using aspnet_tutorial.Data;
 using aspnet_tutorial.Models;
-using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
+using ApplicationDbContext = aspnet_tutorial.Data.AspNetDbContext;
 
 namespace aspnet_tutorial.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        private readonly ApplicationDbContext _context = new AspNetDbContext();
 
         // GET: Customers
         public async Task<ActionResult> Index()
