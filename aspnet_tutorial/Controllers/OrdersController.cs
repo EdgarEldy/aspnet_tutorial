@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Antlr.Runtime.Misc;
 using aspnet_tutorial.Models;
-using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
+using AspNetDbContext = aspnet_tutorial.Data.AspNetDbContext;
 
 namespace aspnet_tutorial.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        private readonly AspNetDbContext _context = new AspNetDbContext();
 
         // GET: Orders with Customers and Products
         public async Task<ActionResult> Index()
