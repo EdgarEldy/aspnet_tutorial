@@ -64,7 +64,11 @@ namespace aspnet_tutorial.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var order = await _context.Orders.FindAsync(id);
+            // Join Order model with Customer and Product models
+            var order = await _context.Orders.Include(c => c.Customer)
+                .Include(p => p.Product)
+                .Where(x => x.Id == id)
+                .FirstAsync();
             if (order == null)
             {
                 return HttpNotFound();
@@ -87,6 +91,7 @@ namespace aspnet_tutorial.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
             ViewBag.CustomerId = new SelectList(_context.Customers, "Id", "FirstName", order.CustomerId);
             ViewData["Categories"] = await _context.Categories.ToListAsync();
             ViewBag.ProductId = new SelectList(_context.Products, "Id", "ProductName", order.ProductId);
@@ -119,7 +124,6 @@ namespace aspnet_tutorial.Controllers
             if (order != null) _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
-
         }
     }
 }
