@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Antlr.Runtime.Misc;
 using aspnet_tutorial.Models;
-using ApplicationDbContext = aspnet_tutorial.Data.ApplicationDbContext;
+using AspNetDbContext = aspnet_tutorial.Data.AspNetDbContext;
 
 namespace aspnet_tutorial.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+        private readonly AspNetDbContext _context = new AspNetDbContext();
 
         // GET: Orders with Customers and Products
         public async Task<ActionResult> Index()
@@ -64,7 +64,11 @@ namespace aspnet_tutorial.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var order = await _context.Orders.FindAsync(id);
+            // Join Order model with Customer and Product models
+            var order = await _context.Orders.Include(c => c.Customer)
+                .Include(p => p.Product)
+                .Where(x => x.Id == id)
+                .FirstAsync();
             if (order == null)
             {
                 return HttpNotFound();
@@ -87,6 +91,7 @@ namespace aspnet_tutorial.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
             ViewBag.CustomerId = new SelectList(_context.Customers, "Id", "FirstName", order.CustomerId);
             ViewData["Categories"] = await _context.Categories.ToListAsync();
             ViewBag.ProductId = new SelectList(_context.Products, "Id", "ProductName", order.ProductId);
@@ -119,7 +124,6 @@ namespace aspnet_tutorial.Controllers
             if (order != null) _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
-
         }
     }
 }
