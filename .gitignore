@@ -245,4 +245,4 @@ ModelManifest.xml
 .idea
 
 # Migrations
-Migrations
+aspnet_tutorial/Migrations

@@ -15,8 +15,7 @@ namespace aspnet_tutorial.Models
         [Key]
         [Column(Order = 1)]
         [ForeignKey("User")]
-        [StringLength(128)]
-        public string UserId { get; set; }
+        public long UserId { get; set; }
         
         [Key]
         [Column(Order = 2)]
